@@ -1,10 +1,10 @@
-# React Native Redux Example
+# React Native Redux with Wallaby Example
 
 To get started:
 
 1. Clone repo   
 ```
-git clone https://github.com/react-native-training/basic-react-native-redux-example.git
+git clone https://github.com/dorraba/reace-native-wallaby-bootstrap.git
 ```
 
 2. Install dependencies   
