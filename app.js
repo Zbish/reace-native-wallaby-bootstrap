@@ -1,16 +1,27 @@
-import React from 'react';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 import { connect } from 'react-redux';
 import { addPerson, deletePerson } from './actions';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableHighlight,
-} from 'react-native';
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+  android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-class App extends React.Component {
+class App extends Component<{}> {
   state = {
     inputValue: '',
   }
@@ -27,65 +38,40 @@ class App extends React.Component {
   updateInput = (inputValue) => {
     this.setState({ inputValue })
   }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>People</Text>
-        <TextInput
-          onChangeText={text => this.updateInput(text)}
-          style={styles.input}
-          value={this.state.inputValue}
-          placeholder="Name"
-        />
-        <TouchableHighlight
-          underlayColor="#ffa012"
-          style={styles.button}
-          onPress={this.addPerson}
-        >
-          <Text style={styles.buttonText}>Add Person</Text>
-        </TouchableHighlight>
-        {
-          this.props.people.map((person, index) => (
-            <View key={index} style={styles.person}>
-              <Text>Name: {person.name}</Text>
-              <Text onPress={() => this.deletePerson(person)}>Delete Person</Text>
-            </View>
-          ))
-        }
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          {instructions}
+        </Text>
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
-    padding: 20,
-  },
-  title: {
-    fontSize: 22,
-    textAlign: 'center',
-  },
-  input: {
-    backgroundColor: '#e4e4e4',
-    height: 55,
-    borderRadius: 3,
-    padding: 5,
-    marginTop: 12,
-  },
-  button: {
-    backgroundColor: '#ff9900',
-    height: 60,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 12,
-    borderRadius: 3,
+    backgroundColor: '#F5FCFF',
   },
-  buttonText: {
-    color: 'white',
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
-  person: {
-    marginTop: 12,
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
 
