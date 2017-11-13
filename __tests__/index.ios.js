@@ -20,6 +20,6 @@ it('renders correctly', () => {
       <App />
     </Provider>
   );
-expect(1).toBe(1)
+  expect(tree).toMatchSnapshot()
   // console.log(tree.root.children.)
 });
